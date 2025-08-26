@@ -47,7 +47,10 @@ class AuthComponent extends StatelessWidget {
                       children: [
                         SizedBox(
                             height: Get.height,
-                            child: Image.asset(image,fit: BoxFit.contain,)),
+                            width: Get.width,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(36),
+                                child: Image.asset(image,fit: BoxFit.cover,))),
                         isAuth == true
                             ? Positioned(
                           left: 40.w,
