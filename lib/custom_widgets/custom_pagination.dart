@@ -32,8 +32,7 @@ class CustomPagination extends StatelessWidget {
             width: 110,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(100),
-              color: kPrimaryColor.withOpacity(0.1),
-              border: Border.all(color: kPrimaryColor,width: 1.5),
+              border: Border.all(color: kBlackColor.withOpacity(0.08)),
             ),
             padding: const EdgeInsets.all(5),
             child: Row(
@@ -41,7 +40,7 @@ class CustomPagination extends StatelessWidget {
               children: [
                 CircleAvatar(
                   radius: 16,
-                  backgroundColor: kBlackColor,
+                  backgroundColor: kPrimaryColor,
                   child: Transform.rotate(
                     angle: 3.1416,
                     child: const Icon(Icons.arrow_right_alt, size: 15,color: kWhiteColor,),
@@ -73,8 +72,8 @@ class CustomPagination extends StatelessWidget {
                 child: Center(
                   child: Text(
                     page.toString(),
-                    style: AppStyles.blackTextStyle().copyWith(
-                      fontSize: 20,
+                    style: AppStyles.nunitoTextStyle().copyWith(
+                      fontSize: 18.sp,
                       fontWeight: FontWeight.w600,
                       color: kBlackColor,
                     ),
@@ -96,17 +95,16 @@ class CustomPagination extends StatelessWidget {
               borderRadius: BorderRadius.circular(100),
               border: Border.all(color: kBlackColor.withOpacity(0.08)),
             ),
-            padding: const EdgeInsets.all(5),
+            padding: const EdgeInsets.symmetric(vertical: 5),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Text("Next", style: AppStyles.blackTextStyle().copyWith(fontSize: 12)),
                 CircleAvatar(
                   radius: 16,
-                  backgroundColor: kBlackColor,
+                  backgroundColor: kPrimaryColor,
                   child: const Icon(Icons.arrow_right_alt, size: 15,color: kWhiteColor,),
                 ),
-
               ],
             ),
           ),

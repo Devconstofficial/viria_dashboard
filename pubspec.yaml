@@ -50,6 +50,8 @@ dependencies:
   country_picker: ^2.0.21
   file_picker: ^8.0.0
   dotted_border: ^2.0.0
+  dropdown_button2: ^2.3.9
+  syncfusion_flutter_maps: ^30.2.7
 
 
 dev_dependencies:
