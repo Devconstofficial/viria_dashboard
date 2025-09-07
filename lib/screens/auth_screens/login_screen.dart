@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:viria_dashboard/custom_widgets/auth_component.dart';
 import '../../../custom_widgets/custom_button.dart';
 import '../../../custom_widgets/custom_textField.dart';
 import '../../../utils/app_colors.dart';
 import '../../../utils/app_images.dart';
-import '../../../utils/app_styles.dart';
 import '../../custom_widgets/custom_text.dart';
-import '../../utils/app_strings.dart';
 import '../../utils/common_code.dart';
 import 'controller/auth_controller.dart';
 
@@ -45,43 +41,16 @@ class LoginScreen extends GetView<AuthController> {
                   borderColor: kBlackColor,
                   borderRadius: 10,
                 ),
-                SizedBox(height: 25.h),
 
-                CustomText(text: "Password",fontSize: 17.sp,fontWeight: FontWeight.w600,),
-                SizedBox(height: 4.h),
-                CustomTextField(
-                  controller: controller.passwordController,
-                  hintText: "Enter your password",
-                  borderColor: kBlackColor,
-                  borderRadius: 10,
-                ),
-                SizedBox(height: 25.h),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    MouseRegion(
-                      cursor: SystemMouseCursors.click,
-                      child: GestureDetector(
-                        onTap: (){
-                          Get.toNamed(kSendOtpScreenRoute);
-                        },
-                        child: CustomText(
-                          text: "Forgot Password?",
-                          fontSize: 18.sp,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 110.h),
+                
+                SizedBox(height: 210.h),
                 CustomButton(
                     title: "Sign in",
                     showShadow: true,
                     showBorder: true,
                     showGradient: true,
                     onTap: (){
-                      Get.toNamed(kDashboardScreenRoute);
+                      controller.signInUser();
                     }),
               ],
             ),

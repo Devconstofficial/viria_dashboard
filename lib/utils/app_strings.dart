@@ -1,7 +1,5 @@
 const String kAuthScreenRoute = "/AuthScreenRoute";
-const String kSendOtpScreenRoute = "/SendOtpScreenRoute";
 const String kVerifyOtpScreenRoute = "/VerifyOtpScreenRoute";
-const String kSetNewPassScreenRoute = "/SetNewPassScreenRoute";
 
 const String kDashboardScreenRoute = "/DashboardScreenRoute";
 const String kSettingsScreenRouteRoute = "/SettingsScreenRouteRoute";
