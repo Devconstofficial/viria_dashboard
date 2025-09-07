@@ -21,6 +21,8 @@ String kDeleteIcon = "$basePathIcons/delete.svg";
 String kCalenderIcon = "$basePathIcons/calender.svg";
 String kDropDownIcon = "$basePathIcons/dropdown.svg";
 String kUploadIcon = "$basePathIcons/upload_icon.svg";
+String kBagIcon = "$basePathIcons/bag.svg";
+String kTicketIcon = "$basePathIcons/ticket.svg";
 
 
 /// IMAGES
@@ -34,4 +36,9 @@ String kVideoImage = "$basePath/videoImage.png";
 String kAuthImage1 = "$basePath/auth1.png";
 String kAuthImage2 = "$basePath/auth2.png";
 String kAuthImage3 = "$basePath/auth3.png";
+String kUserImage = "$basePath/user.png";
+
+
+/// Json
+String kMapJson = "$basePath/map.json";
 

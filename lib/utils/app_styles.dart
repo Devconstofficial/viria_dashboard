@@ -11,6 +11,12 @@ class AppStyles {
     color: kBlackColor,
   );
 
+  static TextStyle nunitoTextStyle() => GoogleFonts.nunito(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w500,
+    color: kBlackColor,
+  );
+
   static TextStyle primaryTextStyle() => GoogleFonts.poppins(
     fontSize: 14.sp,
     fontWeight: FontWeight.w500,

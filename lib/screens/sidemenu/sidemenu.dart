@@ -117,7 +117,7 @@ class _SideMenuState extends State<SideMenu> {
                         child: GestureDetector(
                           onTap: () {
                             menuController.onItemTapped(1);
-                            // Get.toNamed(kDashboardScreenRoute);
+                            Get.toNamed(kUserScreenRoute);
                           },
                           child: Container(
                               height: 64,
@@ -274,7 +274,7 @@ class _SideMenuState extends State<SideMenu> {
                         child: GestureDetector(
                           onTap: () {
                             menuController.onItemTapped(4);
-                            // Get.toNamed(kDashboardScreenRoute);
+                            Get.toNamed(kSubscriptionScreenRoute);
                           },
                           child: Container(
                               height: 64,
