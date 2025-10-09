@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:viria_dashboard/models/response_model.dart';
-import 'package:viria_dashboard/screens/dashboard_screen/controller/dashboard_controller.dart';
 import 'package:viria_dashboard/screens/sidemenu/controller/sidemenu_controller.dart';
 import 'package:viria_dashboard/utils/session_management.dart/session_management.dart';
 import 'package:viria_dashboard/utils/session_management.dart/session_token_keys.dart';

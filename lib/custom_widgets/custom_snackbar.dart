@@ -13,7 +13,7 @@ void showCustomSnackbar(String title, String message,
     borderRadius: 8,
     margin: const EdgeInsets.all(10),
     padding: const EdgeInsets.all(10),
-    duration: const Duration(seconds: 2),
+    duration: const Duration(seconds: 3),
     isDismissible: true,
   );
 }

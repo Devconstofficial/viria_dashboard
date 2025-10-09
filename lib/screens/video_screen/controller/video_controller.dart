@@ -27,7 +27,7 @@ class VideoController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    fetchBackgroundVideos(); 
+    fetchBackgroundVideos();
   }
 
   Future<void> fetchBackgroundVideos() async {
@@ -43,7 +43,6 @@ class VideoController extends GetxController {
     }
   }
 
-
   @override
   void onClose() {
     videoPlayerController.value?.dispose();
@@ -57,10 +56,18 @@ class VideoController extends GetxController {
 
     if (result != null) {
       final file = result.files.single;
-      selectedFileName.value = file.name;
+      final fileName = file.name;
       final bytes = file.bytes;
 
-      log("Picked video: ${file.name}");
+      log("Picked video: $fileName");
+
+      final validationError = _validateFileName(fileName);
+      if (validationError != null) {
+        showCustomSnackbar("Error", validationError);
+        return;
+      }
+
+      selectedFileName.value = fileName;
 
       if (bytes != null && bytes.isNotEmpty) {
         selectedVideoBytes.value = bytes;
@@ -70,6 +77,36 @@ class VideoController extends GetxController {
         showCustomSnackbar("Error", "Selected video is empty.");
       }
     }
+  }
+
+  String? _validateFileName(String fileName) {
+    final nameWithoutExt = fileName.split('.').first;
+
+    if (nameWithoutExt.contains(" ")) {
+      final suggestion = nameWithoutExt
+          .split(" ")
+          .asMap()
+          .entries
+          .map(
+            (entry) =>
+                entry.key == 0
+                    ? entry.value.toLowerCase()
+                    : _capitalize(entry.value.toLowerCase()),
+          )
+          .join("");
+      return "File name contains spaces. Please rename it (e.g. \"$suggestion\") and try again.";
+    }
+
+    if (nameWithoutExt.toUpperCase() == nameWithoutExt) {
+      return "File name should not be fully capitalized. Please rename it (e.g. \"${nameWithoutExt.toLowerCase()}\") and try again.";
+    }
+
+    return null;
+  }
+
+  String _capitalize(String word) {
+    if (word.isEmpty) return word;
+    return word[0].toUpperCase() + word.substring(1);
   }
 
   void _initializeVideoPlayerBytes(Uint8List bytes) {
@@ -216,29 +253,28 @@ class VideoController extends GetxController {
   }
 
   Future<void> deleteVideo(String id) async {
-  try {
-    isLoading.value = true;
+    try {
+      isLoading.value = true;
 
-    final response = await videosServices.deleteBackgroundVideo(id);
+      final response = await videosServices.deleteBackgroundVideo(id);
 
-    if (response == true) {
-      backgroundVideos.removeWhere((video) => video.videoId == id);
+      if (response == true) {
+        backgroundVideos.removeWhere((video) => video.videoId == id);
 
-      showCustomSnackbar(
-        "Success",
-        "Background video deleted successfully.",
-        backgroundColor: kGreenColor,
-      );
-    } else {
-      log("Failed to delete video: $response");
-      showCustomSnackbar("Error", response.toString());
+        showCustomSnackbar(
+          "Success",
+          "Background video deleted successfully.",
+          backgroundColor: kGreenColor,
+        );
+      } else {
+        log("Failed to delete video: $response");
+        showCustomSnackbar("Error", response.toString());
+      }
+    } catch (e, stack) {
+      log("Exception while deleting background video: $e\n$stack");
+      showCustomSnackbar("Error", "Something went wrong while deleting.");
+    } finally {
+      isLoading.value = false;
     }
-  } catch (e, stack) {
-    log("Exception while deleting background video: $e\n$stack");
-    showCustomSnackbar("Error", "Something went wrong while deleting.");
-  } finally {
-    isLoading.value = false;
   }
-}
-
 }
